@@ -1,0 +1,28 @@
+ { rank = max; "String"; "Arg"; "Filename"; "Format"; "Char";
+  "List"; "Sys"; "Array"; "Str"; "Map"; "Set"; }
+subgraph cluster1 {
+node [style=filled];
+"Xml_val";
+"Xml_lib";
+"Xml_lexer";
+"Xml_parser";
+"Xml_charsets";
+"Xml_re";
+"Xml_ns";
+}
+subgraph cluster2 {
+node [style=filled];
+"Xsd_val";
+"Xsd_datatypes";
+"Xsd_lib";
+"Xsd_transducer";
+"Xsd_lineariser";
+"Code_generator";
+}
+subgraph cluster3 {
+node [style=filled];
+"Val_parser";
+"Xsval";
+"Val_re";
+}
+  { rank = min; "Generator"; "Validator"; }

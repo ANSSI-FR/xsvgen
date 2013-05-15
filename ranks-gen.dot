@@ -1,0 +1,22 @@
+"Message" -> "Message_debug";
+ { rank = max; "String"; "Filename"; "Format"; "Char";
+  "List"; "Sys"; "Array"; "Str"; "Map"; "Set"; "Arg"; }
+subgraph cluster1 {
+node [style=filled];
+"Xml_val";
+"Xml_lib";
+"Xml_lexer";
+"Xml_parser";
+"Xml_re";
+"Xml_ns";
+"Xml_charsets";
+}
+subgraph cluster3 {
+node [style=filled];
+"Xsd_val";
+"Xsd_lib";
+"Xsd_transducer";
+"Xsd_lineariser";
+"Code_generator";
+}
+  { rank = min; "Generator"; }

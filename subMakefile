@@ -1,0 +1,17 @@
+
+# Attention, le basename du shell ne fait pas la même chose que le
+# basename de make
+absdir:=$(shell pwd)
+d:=$(shell basename $(absdir))
+
+include variables.mk
+
+CMI_$(d):=$(MLI_$(d):.mli=.cmi)
+CMO_$(d):=$(ML_$(d):.ml=.cmo)
+CMX_$(d):=$(ML_$(d):.ml=.cmx)
+
+all:
+	make -C .. $(CMI_$(d)) $(CMO_$(d)) $(CMX_$(d))
+
+clean:
+	make -C .. clean

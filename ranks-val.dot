@@ -1,0 +1,20 @@
+"Message" -> "Message_debug";
+"Message" -> "Message_silent";
+ { rank = max; "String"; "Filename"; "Format"; "Char";
+  "List"; "Sys"; "Array"; "Str"; "Map"; }
+subgraph cluster1 {
+node [style=filled];
+"Xml_val";
+"Xml_lib";
+"Xml_lexer";
+"Xml_parser";
+"Xml_re";
+"Xml_ns";
+}
+subgraph cluster3 {
+node [style=filled];
+"Val_re";
+"Val_parser";
+"Xsval";
+}
+  { rank = min; "Validator"; }
