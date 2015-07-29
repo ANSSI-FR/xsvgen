@@ -1,0 +1,16 @@
+Installation instructions
+-------------------------
+
+To get xsvgen, first clone the git repository
+% cd <your_dev_dir>
+% git clone https://github.com/ANSSI-FR/xsvgen
+% cd xsvgen
+
+You must copy the config.mk template file and, if needed, adpat it to
+your configuration (default values should work out of the box on
+standard distributions):
+% cp config.mk.tmpl config.mk
+% vi config.mk
+
+Finally, you may compile xsvgen:
+% make
