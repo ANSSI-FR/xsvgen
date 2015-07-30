@@ -12,19 +12,25 @@
 # $Id: Makefile 1691 2012-05-31 09:47:08Z maarek $
 
 .PHONY: clean
-default:: bin objs_cmx
-all:: objs doc bin
+default:: config.mk bin objs_cmx
+all:: config.mk objs doc bin
 clean::
 
 config.mk:
-	@echo "Create a configuration file 'config.mk'"
-	@echo "See the template file 'config.mk.tmpl'"
+	@echo
+	@echo "********************************************************"
+	@echo "***                                                  ***"
+	@echo "*** You must create a configuration file 'config.mk' ***"
+	@echo "***     See the template file 'config.mk.tmpl'       ***"
+	@echo "***                                                  ***"
+	@echo "********************************************************"
+	@echo
 	@exit 1
 
 -include config.mk
 
-WARNING_OPTIONS = -w +a -warn-error +a -strict-sequence -noautolink -cclib -lcamlstr
-WARNING_ANNOT_OPTIONS = -annot -w +a -warn-error +a -strict-sequence -noautolink -cclib -lcamlstr
+WARNING_OPTIONS = -w +a-32..39 -warn-error +a -strict-sequence -noautolink -cclib -lcamlstr
+WARNING_ANNOT_OPTIONS = -annot -w +a-32..39 -warn-error +a -strict-sequence -noautolink -cclib -lcamlstr
 OCAMLOPT_WARN := $(OCAMLOPT) $(WARNING_OPTIONS)
 OCAMLC_WARN = $(OCAMLC) $(WARNING_ANNOT_OPTIONS)
 
