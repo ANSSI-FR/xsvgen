@@ -117,14 +117,13 @@ let of_in_channel ic file_name =
     @raise Error.E [Error.SD_structure]
  *)
 let of_string s =
-  let s_copy = String.copy s in
-  let length = String.length s_copy in
-  { source = String (s_copy);
+  let length = String.length s in
+  { source = String (s);
     parts = Parts.singleton {p_position=0;p_limit=length} (Chars 0);
     exp_position = 0;
     loc_position = 0;
     exp_limit = length;
-    access = (fun i -> try s_copy.[i] with
+    access = (fun i -> try s.[i] with
                        | Invalid_argument _ ->
                            raise (Error.E Error.SD_structure) ) }
 
@@ -198,7 +197,7 @@ let to_string = function
                 s2 ^ s1
               end)
           parts
-          (String.copy "")
+          ("")
 
 (** Return an integer value out of a given string data, return [None]
     if the given string data is not a valid representation of an integer,

@@ -33,7 +33,7 @@ let suffix = function
   | Log -> ".log"
 
 (** Name of the generator library directory. *)
-let generator_lib_dir = String.copy "xsvgen_lib"
+let generator_lib_dir = "xsvgen_lib"
 
 
 (** Return an output name value from a given debug mode and a given
@@ -52,7 +52,7 @@ let of_string debug s =
   then
     raise (Error.E Error.F_wrong_output_basename)
   else
-    Out ((String.copy out_s),debug)
+    Out (out_s,debug)
 
 (** Perform a preparation of the output directory, for a given
     name "xsval":

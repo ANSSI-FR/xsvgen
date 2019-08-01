@@ -50,7 +50,7 @@ let gen_Int f i =
 
 let gen_Bool f b =
   Format.fprintf f "%s"
-    (if b then String.copy "true" else String.copy "false")
+    (if b then "true" else "false")
 
 let gen_Param f wrapped_fprintf =
   Format.fprintf f "@[%a@]"

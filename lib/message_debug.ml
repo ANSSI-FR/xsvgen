@@ -723,10 +723,10 @@ module Pr_error = struct
     " [SCC " ^ (string_of_scc r) ^ "]"
 
   let sec () =
-    String.copy " (security constraint)"
+    " (security constraint)"
 
   let lim () =
-    String.copy " (limitation)"
+    " (limitation)"
 
   let string_of_xsdl_def = function
     | Error.XSDLDEF_type ->
