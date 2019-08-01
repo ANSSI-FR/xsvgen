@@ -1,6 +1,6 @@
 
-# Attention, le basename du shell ne fait pas la même chose que le
-# basename de make
+# Beware, the basename of the shell does not do the same thing as
+# the make basename
 absdir:=$(shell pwd)
 d:=$(shell basename $(absdir))
 

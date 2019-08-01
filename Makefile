@@ -34,7 +34,7 @@ WARNING_ANNOT_OPTIONS = -annot -w +a-32..39 -warn-error +a -strict-sequence -noa
 OCAMLOPT_WARN := $(OCAMLOPT) $(WARNING_OPTIONS)
 OCAMLC_WARN = $(OCAMLC) $(WARNING_ANNOT_OPTIONS)
 
-# Sous-répertoires, en ordre quelconque
+# Subdirectories, in any order
 dir:= lib
 -include $(dir)/Rules.mk
 dir:= xml
