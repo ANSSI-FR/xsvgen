@@ -373,26 +373,31 @@ let empty =
 
 (** Minimum continuation byte *)
 let min_continuation_byte = Char.chr 0x80
+
 (** Maximum continuation byte *)
 let max_continuation_byte = Char.chr 0xBF
 
 (** Minimum first byte of a 1-byte character *)
 let min_1byte_b1 = Char.chr 0x01
+
 (** Maximum first byte of a 1-byte character *)
 let max_1byte_b1 = Char.chr 0x7F
 
 (** Minimum first byte of a 2-bytes character *)
 let min_2bytes_b1 = Char.chr 0xC0
+
 (** Maximum first byte of a 2-bytes character *)
 let max_2bytes_b1 = Char.chr 0xDF
 
 (** Minimum first byte of a 3-bytes character *)
 let min_3bytes_b1 = Char.chr 0xE0
+
 (** Maximum first byte of a 3-bytes character *)
 let max_3bytes_b1 = Char.chr 0xEF
 
 (** Minimum first byte of a 4-bytes character *)
 let min_4bytes_b1 = Char.chr 0xF0
+
 (** Maximum first byte of a 4-bytes character *)
 let max_4bytes_b1 = Char.chr 0xF7
 
