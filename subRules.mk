@@ -11,18 +11,18 @@
 
 # $Id: subRules.mk 1342 2012-03-27 09:22:06Z maarek $
 
-# Prendre en compte le fait qu'on est dans un sous-répertoire
+# Take into account that we are in a subdirectory
 sp 		:= $(sp).x
 dirstack_$(sp)	:= $(d)
 d		:= $(dir)
 
-# Sous-répertoires, s'il y en a, en ordre quelconque
+# Subdirectories, if any, in any order
 # dir:= $(d)/foo
 #include $(dir)/Rules.mk
 
 include $(d)/depend.mk
 
-# Variables locales
+# Local variables
 
 include $(d)/variables.mk
 
@@ -34,7 +34,7 @@ O_$(d):= $(ML_$(d):.ml=.o)
 
 CLEAN:= $(CLEAN) $(CMI_$(d)) $(CMO_$(d)) $(CMX_$(d)) $(O_$(d)) $(ANNOT_$(d)) $(d)/depend.mk $(d)/$(d).cmdoc
 DEPEND:=$(DEPEND) $(d)/depend.mk
-# Règles locales
+# Local rules
 
 $(d)/depend.mk: $(MLI_$(d)) $(ML_$(d))
 
@@ -47,7 +47,7 @@ $(d)/$(d).cmdoc: INCLUDES:= $(INCLUDES_$(d))
 $(d)/$(d).cmdoc: DOC_SOURCE_FILES:= $(MLI_$(d)) $(ML_$(d))
 $(d)/$(d).cmdoc: $(MLI_$(d)) $(ML_$(d))
 
-# Ajout des fichiers à la liste globale
+# Adding files to the global list
 MLI_FILES:= $(MLI_FILES) $(MLI_$(d))
 ML_FILES:= $(ML_FILES) $(ML_$(d))
 CMI_FILES:= $(CMI_FILES) $(CMI_$(d))
@@ -58,6 +58,6 @@ O_FILES:= $(O_FILES) $(O_$(d))
 CMDOC_FILES:= $(CMDOC_FILES) $(d)/$(d).cmdoc
 CMDOC_LOADS:= $(CMDOC_LOADS) -load $(d)/$(d).cmdoc
 
-# Et on remonte
+# And we go back
 d		:= $(dirstack_$(sp))
 sp		:= $(basename $(sp))
