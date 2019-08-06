@@ -1007,14 +1007,14 @@ let to_code_escaped_string sd =
     else calc_len (i + 1) (ri + 4)
   in
   let rlen = calc_len 0 0 in
-  let rs = String.make rlen ' ' in
+  let rs = Bytes.make rlen ' ' in
   let rec pr_char i ri =
     if i >= len
-    then rs
+    then Bytes.to_string rs
     else if s.[i] >= '\032' && s.[i] <= '\126'
     then
       begin
-        rs.[ri] <- s.[i];
+        Bytes.set rs ri s.[i];
         pr_char (i + 1) (ri + 1)
       end
     else
