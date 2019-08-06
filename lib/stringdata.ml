@@ -117,14 +117,13 @@ let of_in_channel ic file_name =
     @raise Error.E [Error.SD_structure]
  *)
 let of_string s =
-  let s_copy = String.copy s in
-  let length = String.length s_copy in
-  { source = String (s_copy);
+  let length = String.length s in
+  { source = String (s);
     parts = Parts.singleton {p_position=0;p_limit=length} (Chars 0);
     exp_position = 0;
     loc_position = 0;
     exp_limit = length;
-    access = (fun i -> try s_copy.[i] with
+    access = (fun i -> try s.[i] with
                        | Invalid_argument _ ->
                            raise (Error.E Error.SD_structure) ) }
 
@@ -145,10 +144,8 @@ let chars_part_to_string (pos,lim) (p_pos,p_lim) offset source =
     | In_channel (ic,_) ->
         begin
           try
-            let s = String.make len '\000' in
             seek_in ic srcoff;
-            really_input ic s 0 len;
-            s
+            really_input_string ic len;
           with
           | End_of_file
           | Invalid_argument _ ->
@@ -198,7 +195,7 @@ let to_string = function
                 s2 ^ s1
               end)
           parts
-          (String.copy "")
+          ("")
 
 (** Return an integer value out of a given string data, return [None]
     if the given string data is not a valid representation of an integer,
@@ -1010,14 +1007,14 @@ let to_code_escaped_string sd =
     else calc_len (i + 1) (ri + 4)
   in
   let rlen = calc_len 0 0 in
-  let rs = String.make rlen ' ' in
+  let rs = Bytes.make rlen ' ' in
   let rec pr_char i ri =
     if i >= len
-    then rs
+    then Bytes.to_string rs
     else if s.[i] >= '\032' && s.[i] <= '\126'
     then
       begin
-        rs.[ri] <- s.[i];
+        Bytes.set rs ri s.[i];
         pr_char (i + 1) (ri + 1)
       end
     else

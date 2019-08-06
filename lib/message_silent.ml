@@ -104,9 +104,9 @@ module Pr_debug = struct
   let fp_utf8_range _ _ =
     ()
   let hex_string_of_string _ =
-    String.copy ""
+    ""
   let string_hex_of_string _ =
-    String.copy ""
+    ""
   let string_of_lexeme _ =
-    String.copy ""
+    ""
 end

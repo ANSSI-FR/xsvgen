@@ -69,13 +69,13 @@ let of_string s extension_l =
       raise (Error.E Error.F_wrong_input_file)
     else
       let extension = get_extension  s extension_l in
-      In ((String.copy s), extension)
+      In (s, extension)
 
 
 (** Return the file name corresponding to an input file value.
    @raise Error.E [Error.F_wrong_printing_file_extension] *)
 let to_string (In (s,_)) =
-  Filename.quote (String.copy s)
+  Filename.quote s
 
 
 (** Record the opened input channels and close the recoreded openend

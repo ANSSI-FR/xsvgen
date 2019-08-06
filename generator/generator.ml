@@ -12,7 +12,7 @@
 
 (** {1 XSD validator generator} *)
 
-let version = String.copy "0.2"
+let version = "0.2"
 
 
 let read_commandline () =

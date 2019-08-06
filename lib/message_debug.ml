@@ -723,10 +723,10 @@ module Pr_error = struct
     " [SCC " ^ (string_of_scc r) ^ "]"
 
   let sec () =
-    String.copy " (security constraint)"
+    " (security constraint)"
 
   let lim () =
-    String.copy " (limitation)"
+    " (limitation)"
 
   let string_of_xsdl_def = function
     | Error.XSDLDEF_type ->
@@ -1114,7 +1114,7 @@ end
 
 
 
-let pr_fun mtype loc descr_fun descr =
+let pr_fun (mtype: mtype) loc descr_fun descr =
   Format.fprintf !log_formatter "[%s] %a%s@."
     (match mtype with
     | Error -> "error"
