@@ -144,10 +144,8 @@ let chars_part_to_string (pos,lim) (p_pos,p_lim) offset source =
     | In_channel (ic,_) ->
         begin
           try
-            let s = String.make len '\000' in
             seek_in ic srcoff;
-            really_input ic s 0 len;
-            s
+            really_input_string ic len;
           with
           | End_of_file
           | Invalid_argument _ ->
