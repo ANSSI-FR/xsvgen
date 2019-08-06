@@ -1114,7 +1114,7 @@ end
 
 
 
-let pr_fun mtype loc descr_fun descr =
+let pr_fun (mtype: mtype) loc descr_fun descr =
   Format.fprintf !log_formatter "[%s] %a%s@."
     (match mtype with
     | Error -> "error"
